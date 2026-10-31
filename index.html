@@ -1,134 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Darryiell | Portfolio</title>
-  <meta name="description" content="Portfolio of Your Name: projects, skills and contact details.">
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
-</head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Darryiell | Portfolio</title>
+    <meta name="description" content="Portfolio of Your Name: projects, skills and contact details.">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+  </head>
+  
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header" id="top">
+    <header class="site-header" id="top">
     <nav class="nav" aria-label="Main">
       <a class="brand" href="#home">DarryX</a>
       <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
       <ul class="nav-links" id="navLinks">
         <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
         <li><a href="#projects">Projects</a></li>
-        <li><a href="#about">About me</a></li>
+        <li><a href="#works">Works</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><button class="theme-btn" id="themeBtn" aria-pressed="false">Dark mode</button></li>
+        <li><button class="theme-btn" id="themeBtn" aria-pressed="false" aria-label="Toggle theme" title="Switch to Dark mode">🌙</button></li>
       </ul>
     </nav>
     <div class="progress" id="progress" aria-hidden="true"></div>
-  </header>
+    </header>
 
-  <main id="main">
-    <!-- HOME -->
-    <section id="home" class="hero" aria-labelledby="hero-title">
-      <div class="hero-text">
-        <p class="hero-kicker">Hi, I'm Darryiell Karllen.</p>
-        <h1 id="hero-title">I build <span id="typed" aria-live="off"></span><span class="caret" aria-hidden="true"></span></h1>
-        <p class="lead">I am currently in my 3rd Year for Multimedia Computing. Looking forward to my internship next semester</p>
-        <p class="hero-actions">
-          <a class="btn" href="#projects">See my projects</a>
-          <a class="btn btn-ghost" href="#contact">Get in touch</a>
-        </p>
-      </div>
-      <svg class="avatar" viewBox="0 0 200 200" role="img" aria-label="Placeholder portrait showing the initials YN. Replace with your photo.">
-        <rect width="200" height="200" rx="28" fill="var(--accent)"/>
-        <text x="100" y="124" text-anchor="middle" font-size="76" font-weight="700" fill="#fff">YN</text>
-      </svg>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects" aria-labelledby="projects-title">
-      <h2 id="projects-title">Projects</h2>
-      <div class="filters" role="group" aria-label="Filter projects by type">
-        <button class="chip is-active" data-filter="all" aria-pressed="true">All</button>
-        <button class="chip" data-filter="web" aria-pressed="false">Web</button>
-        <button class="chip" data-filter="data" aria-pressed="false">Data</button>
-        <button class="chip" data-filter="design" aria-pressed="false">Design</button>
-      </div>
-      <p id="projectCount" class="muted" role="status"></p>
-      <div class="grid" id="projectGrid"></div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" aria-labelledby="about-title">
-      <h2 id="about-title">About me</h2>
-      <div class="about">
-        <div>
-          <p>A Sabahan in Sarawak pursuing my studies in the field of Computer Science.</p>
-          <p>I love playing games that require decision-making and problem-solving. </p>
-          <h3>Experience and education</h3>
-          <ol class="timeline">
-            <li><strong>2025 - now:</strong> Your course or job title, Institution or Company</li>
-            <li><strong>2024:</strong> Internship, club role or achievement</li>
-            <li><strong>2022 - 2024:</strong> Previous study or role</li>
-          </ol>
+    <main id="main">
+      <!-- HOME -->
+      <section id="home" class="hero" aria-labelledby="hero-title">
+        <div class="hero-text">
+          <p class="hero-kicker" style="color: black">Hi, I'm Darryiell Karllen.</p>
+          <h1 id="hero-title">I build <span id="typed" aria-live="off"></span><span class="caret" aria-hidden="true"></span></h1>
+          <p class="lead">I am currently in my 3rd Year for Multimedia Computing. Looking forward to my internship next semester</p>
+          <p class="hero-actions">
+            <a class="btn" href="#projects">See my projects</a>
+            <a class="btn btn-ghost" href="#contact">Get in touch</a>
+          </p>
         </div>
-        <div>
-          <h3>Skills</h3>
-          <ul class="skills" id="skills">
-            <li data-level="85"><span>HTML</span><div class="bar"><i></i></div></li>
-            <li data-level="80"><span>CSS</span><div class="bar"><i></i></div></li>
-            <li data-level="70"><span>JavaScript</span><div class="bar"><i></i></div></li>
-            <li data-level="60"><span>Git</span><div class="bar"><i></i></div></li>
-          </ul>
-          <h3>Stats</h3>
-          <dl class="stats">
-            <div><dt>Projects</dt><dd data-count="5">0</dd></div>
-            <div><dt>Years coding</dt><dd data-count="2">0</dd></div>
-            <div><dt>Cups of tea</dt><dd data-count="300">0</dd></div>
-          </dl>
-        </div>
-      </div>
-    </section>
+        <img src="\images\myPhoto.jpg" alt="Darryiell Karllen" class="avatar" style="border-radius: 28px; object-fit: cover; aspect-ratio: 1/1;">
+      </section>
 
-    <!-- CONTACT -->
-    <section id="contact" aria-labelledby="contact-title">
-      <h2 id="contact-title">Contact</h2>
-      <p>Email me at <a href="mailto:darryiell.kln179@gmail.com" id="emailLink">darryiell.kln179@gmail.com</a>
-        <button class="chip" id="copyEmail" type="button">Copy email</button>
-        <span id="copyMsg" class="muted" role="status"></span></p>
-      <form id="contactForm" novalidate>
-        <div class="field">
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" autocomplete="name" required aria-describedby="name-err">
-          <small class="err" id="name-err"></small>
+      <!-- ABOUT -->
+      <section id="about" aria-labelledby="about-title">
+        <h2 id="about-title">About Me</h2>
+        <div class="about">
+          <div>
+            <p>A Sabahan in Kota Samarahan, Sarawak pursuing my studies in the field of Computer Science. I love playing games that require decision-making and problem-solving. </p>
+            <h3>Education Journey</h3>
+            <ol class="timeline">
+              <li>
+                <span class="date">2024 — Present</span>
+                <h4>Computer Science (Multimedia Computing) • UNIMAS</h4>
+                <p>University Malaysia Sarawak.</p>
+              </li>
+              <li>
+                <span class="date">March 2024</span>
+                <h4>Internship • Data Solutions</h4>
+                <p>Data management and media design deliverables.</p>
+              </li>
+              <li>
+                <span class="date">2021 — 2024</span>
+                <h4>Diploma in Computer Science • UiTM</h4>
+                <p>Universiti Teknologi MARA.</p>
+              </li>
+            </ol>
+          </div>
+          <div>
+            <h3>Skills</h3>
+            <ul class="skills" id="skills">
+              <li data-level="85"><span>Teamwork</span><div class="bar"><i></i></div></li>
+              <li data-level="80"><span>Programming</span><div class="bar"><i></i></div></li>
+              <li data-level="70"><span>Graphic Designing</span><div class="bar"><i></i></div></li>
+              <li data-level="60"><span>UI/UX Design</span><div class="bar"><i></i></div></li>
+            </ul>
+            <h3>Stats</h3>
+            <dl class="stats">
+              <div><dt>Projects</dt><dd data-count="5">0</dd></div>
+              <div><dt>Years coding</dt><dd data-count="4.5">0</dd></div>
+              <div><dt>Cups of Coffee</dt><dd data-count="365">0</dd></div>
+            </dl>
+          </div>
         </div>
-        <div class="field">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-err">
-          <small class="err" id="email-err"></small>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects" aria-labelledby="projects-title">
+        <h2 id="projects-title">My University Projects</h2>
+        <div class="filters" role="group" aria-label="Filter projects by type">
+          <button class="chip is-active" data-filter="all" aria-pressed="true">All</button>
+          <button class="chip" data-filter="App" aria-pressed="false">App</button>
+          <button class="chip" data-filter="Data" aria-pressed="false">Data</button>
+          <button class="chip" data-filter="UI/UX" aria-pressed="false">UI/UX</button>
+          <button class="chip" data-filter="System" aria-pressed="false">System</button>
         </div>
-        <div class="field">
-          <label for="message">Message <span class="muted" id="counter">0/300</span></label>
-          <textarea id="message" name="message" rows="5" maxlength="300" required aria-describedby="message-err"></textarea>
-          <small class="err" id="message-err"></small>
-        </div>
-        <button class="btn" type="submit">Send message</button>
-        <p id="formStatus" role="status"></p>
-      </form>
-    </section>
-  </main>
+        <p id="projectCount" class="muted" role="status"></p>
+        <div class="grid" id="projectGrid"></div>
+      </section>
 
-  <footer class="footer">
-    <p>&copy; <span id="year"></span> Your Name. Local time: <time id="clock"></time></p>
-  </footer>
+      <!-- WORKS -->
+      <section id="works" aria-labelledby="works-title">
+        <h2 id="works-title">My Personal Works & Experiences</h2>
+          <div class="grid works-grid">
 
-  <button class="to-top" id="toTop" aria-label="Back to top" hidden>Top</button>
+            <article class="card work-card">
+              <img src="\images\pertekma_merch.png" alt="Design mockups for PERTEKMA IT WEEK merchandise">
+              <h3>PERTEKMA Merch</h3>
+              <p>A merchandise product line featuring PERTEKMA official Jersey.</p>
+              <p class="muted"><strong>Tools used:</strong> Canva, Adobe Photoshop</p>
+            </article>
 
-  <dialog id="projectDialog" aria-labelledby="dlgTitle">
-    <h3 id="dlgTitle"></h3>
-    <p id="dlgBody"></p>
-    <p id="dlgTags" class="muted"></p>
-    <p><a id="dlgLink" class="btn" href="#" target="_blank" rel="noopener">View project</a>
-       <button class="btn btn-ghost" id="dlgClose" type="button">Close</button></p>
-  </dialog>
-</body>
+            <article class="card work-card">
+              <img src="\images\hac2026.png" alt="T-shirt, logo, and poster designs for Hope Annual Camp">
+              <h3>Hope Annual Camp Designs</h3>
+              <p>Designing T-shirts, logos, and posters for the church annual camp event.</p>
+              <p class="muted"><strong>Tools used:</strong> Canva, Adobe Photoshop, Adobe Illustrator</p>
+            </article>
+
+            <article class="card work-card">
+              <img src="\images\casting.png" alt="Casting For Honor of Kings (IT WEEK 2025)">
+              <h3>Casting For Honor of Kings (IT WEEK 2025)</h3>
+              <p>Participated in the casting process for the popular mobile game "Honor of Kings" during the IT WEEK 2025 event.</p>
+              <p class="muted"><strong>Themes:</strong> eSports, Event Management</p>
+            </article>
+
+          </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" aria-labelledby="contact-title">
+        <h2 id="contact-title">Contact</h2>
+        <p>Email me at <a href="mailto:darryiell.kln179@gmail.com" id="emailLink">darryiell.kln179@gmail.com</a>
+          <button class="chip" id="copyEmail" type="button">Copy email</button>
+          <span id="copyMsg" class="muted" role="status"></span></p>
+        <form id="contactForm" novalidate>
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required aria-describedby="name-err">
+            <small class="err" id="name-err"></small>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-err">
+            <small class="err" id="email-err"></small>
+          </div>
+          <div class="field">
+            <label for="message">Message <span class="muted" id="counter">0/300</span></label>
+            <textarea id="message" name="message" rows="5" maxlength="300" required aria-describedby="message-err"></textarea>
+            <small class="err" id="message-err"></small>
+          </div>
+          <button class="btn" type="submit">Send message</button>
+          <p id="formStatus" role="status"></p>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; <span id="year"></span> DarryK. Local time: <time id="clock"></time></p>
+    </footer>
+
+    <button class="to-top" id="toTop" aria-label="Back to top" hidden>Top</button>
+
+    <dialog id="projectDialog" aria-labelledby="dlgTitle">
+      <h3 id="dlgTitle"></h3>
+      <p id="dlgBody"></p>
+      <p id="dlgTags" class="muted"></p>
+      <p><a id="dlgLink" class="btn" href="#" target="_blank" rel="noopener">View project</a>
+      <button class="btn btn-ghost" id="dlgClose" type="button">Close</button></p>
+    </dialog>
+  </body>
 </html>
