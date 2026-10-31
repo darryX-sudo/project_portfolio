@@ -1,16 +1,15 @@
-/* Portfolio scripts. Edit the data below, then read each function so you can explain it. */
 (() => {
   "use strict";
 
   /* ---------- Data (replace with your own projects) ---------- */
   const PROJECTS = [
-    { title: "Project one",   type: "web",    desc: "One-line summary of what it does.", detail: "Longer description: the problem, your approach, and what you learned.", tags: ["HTML", "CSS"], url: "#" },
-    { title: "Project two",   type: "web",    desc: "One-line summary of what it does.", detail: "Longer description of project two.", tags: ["JavaScript"], url: "#" },
-    { title: "Project three", type: "data",   desc: "One-line summary of what it does.", detail: "Longer description of project three.", tags: ["Python", "Charts"], url: "#" },
-    { title: "Project four",  type: "design", desc: "One-line summary of what it does.", detail: "Longer description of project four.", tags: ["Figma", "UX"], url: "#" },
-    { title: "Project five",  type: "web",    desc: "One-line summary of what it does.", detail: "Longer description of project five.", tags: ["HTML", "JS"], url: "#" }
+    { title: "EduReformSystem",   type: "App",    desc: "An object-oriented Java gamification desktop application featuring badges, quizzes, and file-based overall time tracking.", detail: "An Educational App using Java and OOP principles.", tags: ["Java", "OOP"], url: "#" },
+    { title: "Mee Kolok Ordering System",   type: "System",    desc: "A command line based ordering system for a local food stall.", detail: "Longer description of the Mee Kolok Ordering System.", tags: ["C++"], url: "#" },
+    { title: "Student-Lecturer Management System", type: "System",   desc: "A system for managing the relationship between students and lecturers.", detail: "A system for managing the interaction between students and lecturers.", tags: ["Python"], url: "#" },
+    { title: "KUTS ART App Research",  type: "UI/UX", desc: "Research on UI accessibility for the KUTS ART App.", detail: "This project involves researching UI accessibility guidelines and evaluating the usability of the KUTS ART App.", tags: ["Figma", "UX"], url: "#" },
+    { title: "Sarawak Heritage Database",  type: "Data",    desc: "A database for storing and managing information about Sarawak's cultural heritage.", detail: "A comprehensive database for preserving and showcasing Sarawak's rich cultural heritage.", tags: ["SQL"], url: "#" }
   ];
-  const TYPED_WORDS = ["clean websites.", "small tools.", "things that work."];
+  const TYPED_WORDS = ["basic websites.", "simple applications.", "things that work."];
 
   /* ---------- Helpers ---------- */
   const $ = (sel, root = document) => root.querySelector(sel);
@@ -35,19 +34,20 @@
 
   /* 2. Theme toggle, remembered between visits */
   function initTheme() {
-    const btn = $("#themeBtn"), root = document.documentElement;
-    const apply = theme => {
-      root.dataset.theme = theme;
-      btn.setAttribute("aria-pressed", String(theme === "dark"));
-      btn.textContent = theme === "dark" ? "Light mode" : "Dark mode";
-    };
-    const saved = store.get("theme");
-    apply(saved || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
-    btn.addEventListener("click", () => {
-      const next = root.dataset.theme === "dark" ? "light" : "dark";
-      apply(next); store.set("theme", next);
-    });
-  }
+  const btn = $("#themeBtn"), root = document.documentElement;
+  const apply = theme => {
+    root.dataset.theme = theme;
+    btn.setAttribute("aria-pressed", String(theme === "dark"));
+    btn.textContent = theme === "dark" ? "☀️" : "🌙";
+    btn.title = theme === "dark" ? "Switch to Light mode" : "Switch to Dark mode";
+  };
+  const saved = store.get("theme");
+  apply(saved || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
+  btn.addEventListener("click", () => {
+    const next = root.dataset.theme === "dark" ? "light" : "dark";
+    apply(next); store.set("theme", next);
+  });
+}
 
   /* 3. Typing effect in the hero */
   function initTyping() {
