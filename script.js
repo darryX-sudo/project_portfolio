@@ -3,18 +3,18 @@
 
   /* ---------- Data (replace with your own projects) ---------- */
   const PROJECTS = [
-    { title: "EduReformSystem",   type: "App",    desc: "An object-oriented Java gamification desktop application featuring badges, quizzes, and file-based overall time tracking.", detail: "An Educational App using Java and OOP principles.", tags: ["Java", "OOP"], url: "#" },
-    { title: "Mee Kolok Ordering System",   type: "System",    desc: "A command line based ordering system for a local food stall.", detail: "Longer description of the Mee Kolok Ordering System.", tags: ["C++"], url: "#" },
-    { title: "Student-Lecturer Management System", type: "System",   desc: "A system for managing the relationship between students and lecturers.", detail: "A system for managing the interaction between students and lecturers.", tags: ["Python"], url: "#" },
-    { title: "KUTS ART App Research",  type: "UI/UX", desc: "Research on UI accessibility for the KUTS ART App.", detail: "This project involves researching UI accessibility guidelines and evaluating the usability of the KUTS ART App.", tags: ["Figma", "UX"], url: "#" },
-    { title: "Sarawak Heritage Database",  type: "Data",    desc: "A database for storing and managing information about Sarawak's cultural heritage.", detail: "A comprehensive database for preserving and showcasing Sarawak's rich cultural heritage.", tags: ["SQL"], url: "#" }
+    { title: "EduReformSystem",   type: "App",    desc: "An object-oriented Java gamification desktop application featuring badges, quizzes, and file-based overall time tracking.", detail: "An Educational App using Java and OOP principles.", tags: ["Java", "OOP"], url: "#", image: "images/edureform.png" },
+    { title: "Mee Kolok Ordering System",   type: "System",    desc: "A command line based ordering system for a local food stall.", detail: "Longer description of the Mee Kolok Ordering System.", tags: ["C++"], url: "#", image: "images/meekolok_system.png" },
+    { title: "Student-Lecturer Management System", type: "System",   desc: "A system for managing the relationship between students and lecturers.", detail: "A system for managing the interaction between students and lecturers.", tags: ["Python"], url: "#", image: "images/student_management.png" },
+    { title: "KUTS ART App Research",  type: "UI/UX", desc: "Research on UI accessibility for the KUTS ART App.", detail: "This project involves researching UI accessibility guidelines and evaluating the usability of the KUTS ART App.", tags: ["Figma", "UX"], url: "#", image: "images/KUTS_Mobile_App.png" },
+    { title: "Sarawak Heritage Database",  type: "Data",    desc: "A database for storing and managing information about Sarawak's cultural heritage.", detail: "A comprehensive database for preserving and showcasing Sarawak's rich cultural heritage.", tags: ["SQL"], url: "#", image: "images/local_heritage.jpeg" }
   ];
   const TYPED_WORDS = ["basic websites.", "simple applications.", "things that work."];
 
   /* ---------- Helpers ---------- */
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
-  const store = {                                   // localStorage can fail (private mode), so wrap it
+  const store = {
     get(k) { try { return localStorage.getItem(k); } catch { return null; } },
     set(k, v) { try { localStorage.setItem(k, v); } catch { /* ignore */ } }
   };
@@ -26,7 +26,7 @@
       const open = links.classList.toggle("open");
       btn.setAttribute("aria-expanded", String(open));
     });
-    links.addEventListener("click", e => {          // close after choosing a link
+    links.addEventListener("click", e => {
       if (e.target.closest("a")) { links.classList.remove("open"); btn.setAttribute("aria-expanded", "false"); }
     });
     document.addEventListener("keydown", e => { if (e.key === "Escape") links.classList.remove("open"); });
@@ -34,20 +34,20 @@
 
   /* 2. Theme toggle, remembered between visits */
   function initTheme() {
-  const btn = $("#themeBtn"), root = document.documentElement;
-  const apply = theme => {
-    root.dataset.theme = theme;
-    btn.setAttribute("aria-pressed", String(theme === "dark"));
-    btn.textContent = theme === "dark" ? "☀️" : "🌙";
-    btn.title = theme === "dark" ? "Switch to Light mode" : "Switch to Dark mode";
-  };
-  const saved = store.get("theme");
-  apply(saved || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
-  btn.addEventListener("click", () => {
-    const next = root.dataset.theme === "dark" ? "light" : "dark";
-    apply(next); store.set("theme", next);
-  });
-}
+    const btn = $("#themeBtn"), root = document.documentElement;
+    const apply = theme => {
+      root.dataset.theme = theme;
+      btn.setAttribute("aria-pressed", String(theme === "dark"));
+      btn.textContent = theme === "dark" ? "☀️" : "🌙";
+      btn.title = theme === "dark" ? "Switch to Light mode" : "Switch to Dark mode";
+    };
+    const saved = store.get("theme");
+    apply(saved || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
+    btn.addEventListener("click", () => {
+      const next = root.dataset.theme === "dark" ? "light" : "dark";
+      apply(next); store.set("theme", next);
+    });
+  }
 
   /* 3. Typing effect in the hero */
   function initTyping() {
@@ -74,7 +74,12 @@
       list.forEach(p => {
         const card = document.createElement("article");
         card.className = "card";
-        card.innerHTML = `<h3></h3><p></p><p class="muted"></p><button class="btn" type="button">Details</button>`;
+        card.innerHTML = `<img src="" alt="" class="project-img"><h3></h3><p></p><p class="muted"></p><button class="btn" type="button">Details</button>`;
+        
+        // POPULATING IMAGE DATA
+        $("img", card).src = p.image;
+        $("img", card).alt = "Preview of " + p.title;
+        
         $("h3", card).textContent = p.title;
         $("p", card).textContent = p.desc;
         $(".muted", card).textContent = p.tags.join(", ");
@@ -91,19 +96,27 @@
     render("all");
   }
 
-  /* 6. Project details dialog (native <dialog> traps focus and closes with Esc) */
+  /* 6. Project details dialog */
   function openDialog(p) {
     const dlg = $("#projectDialog");
+    
+    // MODAL IMAGE INJECTION
+    const dlgImg = $("#dlgImg");
+    if (dlgImg) {
+      dlgImg.src = p.image;
+      dlgImg.alt = "Preview of " + p.title;
+    }
+    
     $("#dlgTitle").textContent = p.title;
     $("#dlgBody").textContent = p.detail;
     $("#dlgTags").textContent = "Built with: " + p.tags.join(", ");
-    $("#dlgLink").href = p.url;
     if (typeof dlg.showModal === "function") dlg.showModal(); else dlg.setAttribute("open", "");
   }
+  
   function initDialog() {
     const dlg = $("#projectDialog");
     $("#dlgClose").addEventListener("click", () => dlg.close());
-    dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });   // click backdrop
+    dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
   }
 
   /* 7. Highlight the nav link of the section in view */
@@ -159,7 +172,7 @@
     });
   }
 
-  /* 11. Contact form: live character counter + validation (front-end only) */
+  /* 11. Contact form: live character counter + validation */
   function initForm() {
     const form = $("#contactForm"), msg = $("#message");
     msg.addEventListener("input", () => { $("#counter").textContent = `${msg.value.length}/300`; });
@@ -180,7 +193,7 @@
     form.addEventListener("submit", e => {
       e.preventDefault();
       const fields = $$("input, textarea", form);
-      const results = fields.map(check);              // run all checks so every error shows
+      const results = fields.map(check);
       const status = $("#formStatus");
       if (results.every(Boolean)) {
         status.textContent = "Thanks! Your message is ready to send (demo only: nothing was uploaded).";
@@ -200,7 +213,7 @@
     tick(); setInterval(tick, 30000);
   }
 
-  /* Start everything. Each init is isolated so one failure does not stop the rest. */
+  /* Start everything. */
   document.addEventListener("DOMContentLoaded", () => {
     [initMenu, initTheme, initTyping, initProjects, initDialog, initActiveLink,
      initScroll, initReveal, initCopy, initForm, initFooter].forEach(fn => {
